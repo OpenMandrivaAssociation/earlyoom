@@ -4,7 +4,7 @@ Release: 1
 License: MIT
 URL: https://github.com/rfjakob/earlyoom
 Summary: Early OOM Daemon for Linux
-Source0: https://github.com/rfjakob/earlyoom/archive/v%{version}/{name}-%{version}.tar.gz
+Source0: https://github.com/rfjakob/earlyoom/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: systemd
 
