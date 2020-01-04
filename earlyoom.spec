@@ -33,7 +33,7 @@ sed -e '/systemctl/d' -i Makefile
 %license LICENSE
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
-%{_mandir}/man1/%{name}.*
+#{_mandir}/man1/%{name}.*
 %config(noreplace) %{_sysconfdir}/default/%{name}
 
 %post
