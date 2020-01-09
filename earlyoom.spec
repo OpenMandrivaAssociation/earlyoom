@@ -1,12 +1,11 @@
-Name: earlyoom
-Version: 1.3
-Release: 1
-License: MIT
-URL: https://github.com/rfjakob/earlyoom
-Summary: Early OOM Daemon for Linux
-Source0: https://github.com/rfjakob/earlyoom/archive/v%{version}/%{name}-%{version}.tar.gz
-
-BuildRequires: systemd
+Summary:	Early OOM Daemon for Linux
+Name:		earlyoom
+Version:	1.3
+Release:	2
+License:	MIT
+URL:		https://github.com/rfjakob/earlyoom
+Source0:	https://github.com/rfjakob/earlyoom/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:	systemd-macros
 
 %description
 The oom-killer generally has a bad reputation among Linux users.
@@ -28,19 +27,15 @@ sed -e '/systemctl/d' -i Makefile
 %install
 %make_install PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
 
+install -d %{buildroot}%{_presetdir}
+cat > %{buildroot}%{_presetdir}/86-%{name}.preset << EOF
+enable %{name}.service
+EOF
+
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_presetdir}/86-%{name}.preset
 %{_unitdir}/%{name}.service
-#{_mandir}/man1/%{name}.*
 %config(noreplace) %{_sysconfdir}/default/%{name}
-
-%post
-%systemd_post %{name}.service
-
-%preun
-%systemd_preun %{name}.service
-
-%postun
-%systemd_postun_with_restart %{name}.service
