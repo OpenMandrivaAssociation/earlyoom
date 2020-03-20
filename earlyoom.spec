@@ -1,7 +1,7 @@
 Summary:	Early OOM Daemon for Linux
 Name:		earlyoom
 Version:	1.4
-Release:	1
+Release:	2
 License:	MIT
 URL:		https://github.com/rfjakob/earlyoom
 Source0:	https://github.com/rfjakob/earlyoom/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -22,7 +22,7 @@ sed -e '/systemctl/d' -i Makefile
 
 %build
 %set_build_flags
-%make_build
+%make_build PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
 
 %install
 %make_install PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
