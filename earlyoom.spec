@@ -1,7 +1,7 @@
 Summary:	Early OOM Daemon for Linux
 Name:		earlyoom
 Version:	1.6.2
-Release:	2
+Release:	3
 License:	MIT
 URL:		https://github.com/rfjakob/earlyoom
 Source0:	https://github.com/rfjakob/earlyoom/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -32,6 +32,15 @@ install -d %{buildroot}%{_presetdir}
 cat > %{buildroot}%{_presetdir}/86-%{name}.preset << EOF
 enable %{name}.service
 EOF
+
+%post
+%systemd_post %{name}.service
+
+%preun
+%systemd_preun %{name}.service
+
+%postun
+%systemd_postun_with_restart %{name}.service
 
 %files
 %doc README.md
