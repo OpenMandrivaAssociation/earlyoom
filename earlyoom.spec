@@ -1,12 +1,12 @@
 Summary:	Early OOM Daemon for Linux
 Name:		earlyoom
 Version:	1.6.2
-Release:	3
+Release:	4
 License:	MIT
 URL:		https://github.com/rfjakob/earlyoom
 Source0:	https://github.com/rfjakob/earlyoom/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:	https://src.fedoraproject.org/rpms/earlyoom/raw/master/f/earlyoom-fedora-options.patch
-BuildRequires:	systemd-macros
+BuildRequires:	systemd-rpm-macros
 
 %description
 The oom-killer generally has a bad reputation among Linux users.
