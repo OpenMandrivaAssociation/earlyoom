@@ -1,7 +1,7 @@
 Summary:	Early OOM Daemon for Linux
 Name:		earlyoom
-Version:	1.6.2
-Release:	4
+Version:	1.7
+Release:	1
 License:	MIT
 URL:		https://github.com/rfjakob/earlyoom
 Source0:	https://github.com/rfjakob/earlyoom/archive/v%{version}/%{name}-%{version}.tar.gz
